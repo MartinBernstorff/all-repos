@@ -24,7 +24,7 @@ class Settings(NamedTuple):
 
 def list_repos(settings: Settings) -> dict[str, str]:
     repos = github_api.get_all(
-        f'{settings.base_url}/user/repos?per_page=100',
+        f'{settings.base_url}/user/repos?per_page=100?type=all',
         headers={'Authorization': f'token {load_api_key(settings)}'},
     )
     return github_api.filter_repos(
